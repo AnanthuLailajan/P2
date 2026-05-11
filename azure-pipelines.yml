@@ -24,6 +24,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
         backendServiceArm: 'azure-devops-connection'
         backendAzureRmOverrideSubscriptionID: '9ed6a571-7684-46a1-916a-dc19077389ae'
         backendAzureRmResourceGroupName: 'NCPL'
@@ -36,4 +37,5 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'plan'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
         environmentServiceNameAzureRM: 'azure-devops-connection'
