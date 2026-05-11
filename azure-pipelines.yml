@@ -6,25 +6,16 @@ pool:
 
 stages:
 - stage: Terraform_Init_Plan
-  displayName: Terraform Init Plan
-
   jobs:
   - job: InitPlan
-    displayName: Init Plan
-
     steps:
 
-    - task: TerraformInstaller@1
-      displayName: Install Terraform
-      inputs:
-        terraformVersion: '1.7.5'
-
     - task: TerraformTask@5
-      displayName: Terraform Init-Dev
+      displayName: Terraform Init
       inputs:
         provider: 'azurerm'
         command: 'init'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
+        terraformVersion: '1.7.5'
         backendServiceArm: 'azure-devops-connection'
         backendAzureRmOverrideSubscriptionID: '9ed6a571-7684-46a1-916a-dc19077389ae'
         backendAzureRmResourceGroupName: 'NCPL'
@@ -37,5 +28,5 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'plan'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
+        terraformVersion: '1.7.5'
         environmentServiceNameAzureRM: 'azure-devops-connection'
