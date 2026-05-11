@@ -26,10 +26,3 @@ stages:
         backendAzureRmStorageAccountName: 'ananthup2'
         backendAzureRmContainerName: 'tfstate'
         backendAzureRmKey: 'dev.terraform.tfstate'
-
-    - task: TerraformTask@5
-      displayName: Terraform Plan
-      inputs:
-        provider: 'azurerm'
-        command: 'plan'
-        environmentServiceNameAzureRM: 'azure-devops-connection'
