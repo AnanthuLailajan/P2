@@ -5,7 +5,7 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-- stage: Terraform_Init_Plan
+- stage: Terraform
   jobs:
   - job: InitPlan
     steps:
@@ -17,7 +17,6 @@ stages:
         command: 'init'
         terraformVersion: '1.7.5'
         backendServiceArm: 'azure-devops-connection'
-        backendAzureRmOverrideSubscriptionID: '9ed6a571-7684-46a1-916a-dc19077389ae'
         backendAzureRmResourceGroupName: 'NCPL'
         backendAzureRmStorageAccountName: 'ananthup2'
         backendAzureRmContainerName: 'tfstate'
