@@ -20,6 +20,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
         backendServiceArm: 'azure-devops-connection'
         backendAzureRmResourceGroupName: 'NCPL'
         backendAzureRmStorageAccountName: 'ananthup2'
