@@ -41,3 +41,13 @@ stages:
         environmentServiceNameAzureRM: 'azure-devops-connection'
         workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
         commandOptions: '-var-file=dev.tfvars'
+
+    - task: TerraformTask@5
+      displayName: Terraform Apply
+      inputs:
+        provider: 'azurerm'
+        command: 'apply'
+        environmentServiceNameAzureRM: 'azure-devops-connection'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
+        commandOptions: '-var-file=dev.tfvars -auto-approve'
+
