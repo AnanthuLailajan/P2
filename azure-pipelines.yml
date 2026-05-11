@@ -28,12 +28,16 @@ stages:
         backendAzureRmKey: 'dev.terraform.tfstate'
 
     - task: TerraformTask@5
+      displayName: Terraform Validate
       inputs:
         provider: 'azurerm'
         command: 'validate'
 
     - task: TerraformTask@5
+      displayName: Terraform Plan
       inputs:
         provider: 'azurerm'
         command: 'plan'
         environmentServiceNameAzureRM: 'azure-devops-connection'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
+        commandOptions: '-var-file=dev.tfvars'
