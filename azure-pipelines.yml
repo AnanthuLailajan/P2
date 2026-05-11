@@ -13,6 +13,7 @@ stages:
     displayName: Init Plan
 
     steps:
+
     - task: TerraformInstaller@1
       displayName: Install Terraform
       inputs:
@@ -29,3 +30,10 @@ stages:
         backendAzureRmStorageAccountName: 'ananthup2'
         backendAzureRmContainerName: 'tfstate'
         backendAzureRmKey: 'dev.terraform.tfstate'
+
+    - task: TerraformTask@5
+      displayName: Terraform Plan
+      inputs:
+        provider: 'azurerm'
+        command: 'plan'
+        environmentServiceNameAzureRM: 'azure-devops-connection'
