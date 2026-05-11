@@ -10,12 +10,16 @@ stages:
   - job: InitPlan
     steps:
 
+    - task: TerraformInstaller@1
+      displayName: Install Terraform
+      inputs:
+        terraformVersion: '1.7.5'
+
     - task: TerraformTask@5
       displayName: Terraform Init
       inputs:
         provider: 'azurerm'
         command: 'init'
-        terraformVersion: '1.7.5'
         backendServiceArm: 'azure-devops-connection'
         backendAzureRmResourceGroupName: 'NCPL'
         backendAzureRmStorageAccountName: 'ananthup2'
@@ -27,5 +31,4 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'plan'
-        terraformVersion: '1.7.5'
         environmentServiceNameAzureRM: 'azure-devops-connection'
